@@ -10,8 +10,7 @@ services:
 
   cl_tissue.scanner:
     class: '%cl_tissue.adapter.mock.class%'
-    factory_service: 'cl_tissue.adapter_registry'
-    factory_method: 'get'
+    factory: ['@cl_tissue.adapter_registry', 'get']
     arguments:
       - '%cl_tissue.adapter.alias%'
 
