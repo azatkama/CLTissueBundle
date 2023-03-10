@@ -33,11 +33,10 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $tb = new TreeBuilder();
-        $self = $this;
-        $rootNode = $tb->root('cl_tissue');
+        $tb = new TreeBuilder('cl_tissue');
 
-        $rootNode
+        $tb
+            ->getRootNode()
             ->children()
                 ->arrayNode('adapter')
                     ->isRequired()
