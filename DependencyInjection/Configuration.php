@@ -42,9 +42,9 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->beforeNormalization()
                         ->ifNull()
-                        ->then(function($v) use ($self) {
+                        ->then(function($v) {
                             $retVal = ['alias' => 'clamav'];
-                            if ($resolver = $self->getResolver($retVal['alias'])) {
+                            if ($resolver = $this->getResolver($retVal['alias'])) {
                                 $retVal['options'] = $resolver->resolve([]);
                             }
 
@@ -53,9 +53,9 @@ class Configuration implements ConfigurationInterface
                     ->end()
                     ->beforeNormalization()
                         ->ifString()
-                        ->then(function($v) use ($self) {
+                        ->then(function($v) {
                             $retVal = ['alias' => $v];
-                            if ($resolver = $self->getResolver($retVal['alias'])) {
+                            if ($resolver = $this->getResolver($retVal['alias'])) {
                                 $retVal['options'] = $resolver->resolve([]);
                             }
 
